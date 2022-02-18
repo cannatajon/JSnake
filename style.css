@@ -1,0 +1,37 @@
+* {
+  margin: 0 auto;
+}
+
+h1 {
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#gameBoard {
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  box-shadow: 10px 20px 50px black;
+}
+
+.cell {
+  background-color: black;
+  width: 58px;
+  height: 58px;
+  margin: 0;
+  border: 1px solid black;
+}
+
+.snake {
+  background-color: green;
+  border: 1px solid black;
+}
+
+.fruit {
+  background-color: red;
+  border: 1px solid white;
+}
