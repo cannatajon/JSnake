@@ -7,19 +7,48 @@
     <title>JSnake</title>
     <link rel="stylesheet" href = "style.css"></link>
     <script defer src = "script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
 
 <body>  
 
-    <h1>Snake</h1>
+    <h1>JSnake</h1>
 
-    <div id="gameBoard"></div>
-    <div class="slidecontainer">
-        <input type="range" min="8" max="20" value="8" class="slider" id="myRange">
-      </div>
-    <button onclick="startGame()">Start</button>
-    <button onclick="showGrid()">Show Grid</button>
-    <button onclick="killGrid()">Kill Grid</button>
+    <div id="layout" class = "glow">
+        <div id="gameBoardWrapper">
+            <div id="gameBoard"></div>
+        </div>
+        <div id="gameOptions">
+
+            <div class = 'scoreContainer'>
+                <h2>Score</h2>
+                <p id="score">0</p>
+            </div>
+            <div class="slideContainer">
+                <p>Grid Size</p>
+                <input type="range" min="10" max="20" value="15" class="slider" id="myRange">
+                <p id = "rowCounter">15</p>
+                <p>Speed</p>
+                <input type="range" min="5" max="20" value="12" class="slider" id="mySpeed">
+                <p id = "speedCounter">10</p>
+                <button id="gridButton" onclick="showGrid()">Grid</button>
+            </div>
+            <div class="soundContainer">
+                <button id="musicButton" onclick="playMusic()">Music</button>
+                <button id="soundButton" onclick="playSFX()">SFX</button>
+            </div>
+            <button id = "startButton" onclick="startGame()">Start</button>
+            <p id = "rowCounter"></p>
+
+        </div>
+        <div id="snakeOptions"></div>
+    </div>
+
+    <p id = "rowCounter"></p>
     
 </body>
 </html>
