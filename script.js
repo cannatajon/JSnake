@@ -13,7 +13,10 @@ let yellowSnake = document.querySelector('#yellow');
 let scoreOutput = document.querySelector('#score');
 let speedOutput = document.querySelector('#speedCounter');
 let gridButton = document.querySelector('#gridButton');
-let sfxButton = document.querySelector('#soundButton')
+let sfxButton = document.querySelector('#soundButton');
+let overlay = document.querySelector('#overlay');
+let gotItBtn = document.querySelector('#gotIt');
+let lostGameOutput = document.querySelector('#lostGameOutput');
 let eatFruitSound = new Audio ('sounds/fruit2.wav');
 let gameOverSound = new Audio ('sounds/gameOver.wav')
 let snakeColor = 'snake';
@@ -33,6 +36,8 @@ let showGridOnScreen = false;
 let sfx = true;
 
 function startGame(){
+    lostGameOutput.style.display = 'none';
+    overlay.style.display = 'none';
     drawBoard();
     firstFruit();
     changeBoardSize();
@@ -54,20 +59,23 @@ function moveOutcomes(){
 
     if(currentSnake[0] + width >= (width * width) && direction == +width){
         gameOver();
+        lostMessage();
     }
     else if (currentSnake[0] % width == width -1 && direction == 1){
         gameOver();
+        lostMessage();
     }
     else if (currentSnake[0] % width == 0 && direction == -1){
         gameOver();
-        
+        lostMessage();
     }
     else if (currentSnake[0] - width < 0 && direction == -width){
         gameOver();
-        
+        lostMessage();
     }
     else if(cell[currentSnake[0] + direction].classList.contains(snakeColor)){
         gameOver();
+        lostMessage();
     }
 
     currentSnake.unshift(currentSnake[0] + direction);
@@ -96,7 +104,7 @@ function moveOutcomes(){
 //assign up/down/left/right to arrow keys and WASD
 function controls(event){
     event.preventDefault();
-    
+
     if (event.keyCode === 32){
         startGame();
     }
@@ -216,7 +224,6 @@ function playSFX(){
 }
 
 
-
 let gridSize = function getGridSize(){
     let rows = boardSizeSlider.value;
     return rows * rows;
@@ -239,6 +246,7 @@ function changeSpeed(){
 }
 
 snakeOptions.addEventListener('click', snakeChoice)
+gotItBtn.addEventListener('click',()=>{overlay.style.display = 'none'});
 
 function snakeChoice(e){
     if (e.target.id == 'red'){
@@ -258,5 +266,13 @@ function snakeChoice(e){
         selectedSnake.innerText = 'Jared';
     }
 }
+
+function lostMessage(){
+    lostGameOutput.style.display = 'block';
+    lostGameOutput.innerText = `Game Over. Press spacebar or 'Start' to replay`;
+    lostGameOutput.style.textAlign = 'center';
+    lostGameOutput.style.color = 'white';
+}
+
 
 drawBoard()
