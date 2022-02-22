@@ -307,6 +307,6 @@ input {
 /* 13 Inch Macbook */
 @media (max-width: 1450px) {
   body {
-    zoom: 50%;
+    zoom: 85%;
   }
 }
