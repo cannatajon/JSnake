@@ -95,6 +95,8 @@ function moveOutcomes(){
 
 //assign up/down/left/right to arrow keys and WASD
 function controls(event){
+    event.preventDefault();
+    
     if (event.keyCode === 32){
         startGame();
     }
