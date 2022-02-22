@@ -4,12 +4,20 @@ const boardWidth = gameBoard.offsetWidth;
 const boardSizeSlider = document.querySelector('input');
 const speedSlider = document.querySelector('#mySpeed');
 let cell = document.querySelectorAll('.cell');
+let snakeOptions = document.querySelector('#snakeOptions');
+let greenSnake = document.querySelector('#green');
+let redSnake = document.querySelector('#red');
+let blueSnake = document.querySelector('#blue');
+let orangeSnake = document.querySelector('#orange');
+let yellowSnake = document.querySelector('#yellow');
 let scoreOutput = document.querySelector('#score');
 let speedOutput = document.querySelector('#speedCounter');
 let gridButton = document.querySelector('#gridButton');
 let sfxButton = document.querySelector('#soundButton')
 let eatFruitSound = new Audio ('sounds/fruit2.wav');
 let gameOverSound = new Audio ('sounds/gameOver.wav')
+let snakeColor = 'snake';
+let selectedSnake = document.querySelector('#selectedSnake');
 
 //let apple and snake start in first div (cell)
 let appleIndex = 0;
@@ -21,15 +29,15 @@ let score = 0;
 let speed = speedSlider.value;
 let intervalTime = 0;
 let interval = 0;
-let showGridOnScreen = true;
+let showGridOnScreen = false;
 let sfx = true;
 
 function startGame(){
     drawBoard();
     firstFruit();
-    changeBoardSize()
-    appleIndex = firstFruit()
-    currentSnake.forEach(idx => cell[idx].classList.remove('snake'));
+    changeBoardSize();
+    appleIndex = firstFruit();
+    currentSnake.forEach(idx => cell[idx].classList.remove(snakeColor));
     cell[appleIndex].classList.remove('fruit');
     clearInterval(interval);
     score = 0;
@@ -37,7 +45,8 @@ function startGame(){
     direction = 1;
     intervalTime = 1000 / speed;
     currentSnake = [2,1,0];
-    currentSnake.forEach(idx => cell[idx].classList.add('snake'));
+    currentSnake.forEach(idx => cell[idx].classList.add(snakeColor));
+    
     interval = setInterval(moveOutcomes, intervalTime);
 }
 
@@ -57,13 +66,13 @@ function moveOutcomes(){
         gameOver();
         
     }
-    else if(cell[currentSnake[0] + direction].classList.contains('snake')){
+    else if(cell[currentSnake[0] + direction].classList.contains(snakeColor)){
         gameOver();
     }
 
     currentSnake.unshift(currentSnake[0] + direction);
     let tail = currentSnake.pop();
-    cell[tail].classList.remove('snake');
+    cell[tail].classList.remove(snakeColor)
     cell[appleIndex].classList.add('fruit');
     
 
@@ -72,7 +81,7 @@ function moveOutcomes(){
             eatFruitSound.play();
         }
         cell[currentSnake[0]].classList.remove('fruit');
-        cell[tail].classList.add('snake');
+        cell[tail].classList.add(snakeColor);
         currentSnake.push(tail);
         randomFruit();
         score++;
@@ -80,7 +89,7 @@ function moveOutcomes(){
         
 
     }
-    cell[currentSnake[0]].classList.add('snake')
+    cell[currentSnake[0]].classList.add(snakeColor)
 
 }
 
@@ -227,6 +236,25 @@ function changeSpeed(){
     speedOutput.innerHTML = speed;
 }
 
-console.log(gameBoard.offsetWidth)
-console.log(cell)
+snakeOptions.addEventListener('click', snakeChoice)
+
+function snakeChoice(e){
+    if (e.target.id == 'red'){
+        snakeColor = "red";
+        selectedSnake.innerText = 'Hector';
+    }else if (e.target.id == 'blue'){
+        snakeColor = "blue"
+        selectedSnake.innerText = 'Stacy';
+    }else if (e.target.id == 'orange'){
+        snakeColor = "orange"
+        selectedSnake.innerText = 'Sam';
+    }else if (e.target.id == 'yellow'){
+        snakeColor = "yellow"
+        selectedSnake.innerText = 'Becka';
+    }else{
+        snakeColor = 'snake'
+        selectedSnake.innerText = 'Jared';
+    }
+}
+
 drawBoard()
