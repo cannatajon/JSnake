@@ -5,17 +5,13 @@ const boardSizeSlider = document.querySelector('input');
 const speedSlider = document.querySelector('#mySpeed');
 let cell = document.querySelectorAll('.cell');
 let snakeOptions = document.querySelector('#snakeOptions');
-let greenSnake = document.querySelector('#green');
-let redSnake = document.querySelector('#red');
-let blueSnake = document.querySelector('#blue');
-let orangeSnake = document.querySelector('#orange');
-let yellowSnake = document.querySelector('#yellow');
 let scoreOutput = document.querySelector('#score');
 let speedOutput = document.querySelector('#speedCounter');
 let gridButton = document.querySelector('#gridButton');
 let sfxButton = document.querySelector('#soundButton');
 let overlay = document.querySelector('#overlay');
 let gotItBtn = document.querySelector('#gotIt');
+let snakeSelect = document.querySelectorAll('#snakeChoice');
 let lostGameOutput = document.querySelector('#lostGameOutput');
 let eatFruitSound = new Audio ('sounds/fruit2.wav');
 let gameOverSound = new Audio ('sounds/gameOver.wav')
@@ -34,10 +30,13 @@ let intervalTime = 0;
 let interval = 0;
 let showGridOnScreen = false;
 let sfx = true;
+let gameActive = false;
 
 function startGame(){
+    gameActive = true;
     lostGameOutput.style.display = 'none';
     overlay.style.display = 'none';
+    hideOptions();
     drawBoard();
     firstFruit();
     changeBoardSize();
@@ -204,10 +203,19 @@ function gridOn(){
 }
 
 function gameOver(){
+    gameActive = false;
     if(sfx){
         gameOverSound.play();
         }
+
     currentSnake.shift();
+    gameActive = false;
+
+    snakeSelect.forEach(elem => {
+        elem.style.display = 'flex';
+    })
+    boardSizeSlider.style.display = 'block';
+    speedSlider.style.display = 'block';
     clearInterval(interval);
 
 }
@@ -272,6 +280,16 @@ function lostMessage(){
     lostGameOutput.innerText = `Game Over. Press spacebar or 'Start' to replay`;
     lostGameOutput.style.textAlign = 'center';
     lostGameOutput.style.color = 'white';
+}
+
+function hideOptions(){
+    if(gameActive){
+        snakeSelect.forEach(elem => {
+            elem.style.display = 'none';
+        })
+        boardSizeSlider.style.display = 'none';
+        speedSlider.style.display = 'none';
+    }
 }
 
 

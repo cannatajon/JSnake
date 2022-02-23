@@ -145,7 +145,7 @@ input {
   box-shadow: 0px 0px 100px black;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 10px;
   color: white;
@@ -288,6 +288,7 @@ input {
 #overlay p {
   text-align: center;
   padding: 10px;
+  line-height: 1.5;
 }
 
 #overlay img {
@@ -296,6 +297,7 @@ input {
 
 #lostGameMessage {
   width: 100%;
+  line-height: 1.5;
   height: 100%;
   position: absolute;
   display: flex;
