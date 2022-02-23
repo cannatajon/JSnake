@@ -80,6 +80,7 @@ function moveOutcomes(){
     currentSnake.unshift(currentSnake[0] + direction);
     let tail = currentSnake.pop();
     cell[tail].classList.remove(snakeColor)
+
     cell[appleIndex].classList.add('fruit');
     
 
@@ -167,8 +168,7 @@ function randomFruit(){
     do{
         appleIndex = Math.floor(Math.random()* cell.length);
     }
-    while(cell[appleIndex].classList.contains('snake'));
-    console.log(cell.length);
+    while(cell[appleIndex].classList.contains(snakeColor));
 
 }
 
