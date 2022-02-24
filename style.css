@@ -231,26 +231,31 @@ input {
   background-color: green;
   opacity: 0.9;
   border: 1px solid black;
+  border-radius: 5px;
 }
 .red {
   background-color: red;
   opacity: 0.9;
   border: 1px solid black;
+  border-radius: 5px;
 }
 .blue {
   background-color: blue;
   opacity: 0.9;
   border: 1px solid black;
+  border-radius: 5px;
 }
 .orange {
   background-color: orange;
   opacity: 0.9;
   border: 1px solid black;
+  border-radius: 5px;
 }
 .yellow {
   background-color: yellow;
   opacity: 0.9;
   border: 1px solid black;
+  border-radius: 5px;
 }
 
 .fruit {
@@ -300,10 +305,47 @@ input {
   line-height: 1.5;
   height: 100%;
   position: absolute;
-  display: flex;
+  display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1;
+}
+
+#lostGameOutput {
+  display: block;
+  text-align: center;
+  color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+#enterName {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#initials {
+  background: none;
+  border: none;
+  border-bottom: 2px solid white;
+  width: 65px;
+  height: 50px;
+  margin: auto;
+}
+
+#initials,
+label {
+  display: block;
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  font-size: 15pt;
 }
 
 /* 13 Inch Macbook */
