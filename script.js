@@ -340,9 +340,4 @@ function leaderInput(){
         }
     }
 
-    
-
-
-
-
 drawBoard();

@@ -328,15 +328,6 @@ input {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 5%;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-
 #enterName {
   display: flex;
   justify-content: center;
