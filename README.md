@@ -12,6 +12,14 @@
  </ul>
 
 <img src = "images/example.png" width=80%>
+
 <p>Written in HTML/CSS/JavaScript</p>
+
+<h2>Icebox</h2>
+<p>Future changes include:</p>
+<ul>
+   <li>Changing leaderboard logic to adjust highscore holder at top</li>
+   <li>More CSS animations to simulate snake swallowing the fruit</li>
+</ul>
 
 Play [JSnake](https://cannatajon.github.io/JSnake/)
