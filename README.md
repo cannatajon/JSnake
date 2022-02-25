@@ -13,6 +13,6 @@
     <li>Leaderboard to track your progress, or compete with your enemies</li>
  </ul>
 
-[Example](images/example.png)
+<img src = "images/example.png" width=80%>
 
 Play [JSnake](https://cannatajon.github.io/JSnake/)
