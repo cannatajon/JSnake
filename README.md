@@ -12,5 +12,6 @@
  </ul>
 
 <img src = "images/example.png" width=80%>
+<p>Written in HTML/CSS/JavaScript</p>
 
 Play [JSnake](https://cannatajon.github.io/JSnake/)
