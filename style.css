@@ -307,7 +307,7 @@ input {
   position: absolute;
   display: none;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   z-index: 1;
 }
@@ -318,17 +318,17 @@ input {
   color: white;
 }
 
+#enterName {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
   outline: none;
-}
-
-#enterName {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 
 #initials {
@@ -346,6 +346,33 @@ label {
   color: white;
   font-family: "Press Start 2P", cursive;
   font-size: 15pt;
+}
+
+#leaderboard {
+  color: white;
+  font-size: 20pt;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#nameScore {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#nameScore > * {
+  margin: 0;
+  padding: 0;
+}
+
+#dots {
+  flex: 1;
+  border-bottom: 4px dotted white;
 }
 
 /* 13 Inch Macbook */

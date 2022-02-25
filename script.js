@@ -17,6 +17,7 @@ let gotItBtn = document.querySelector('#gotIt');
 let enterName = document.querySelector('#initials');
 let snakeSelect = document.querySelectorAll('#snakeChoice');
 let lostGameOutput = document.querySelector('#lostGameMessage');
+let leaderBoard = document.querySelector('#leaderboard');
 let snakeColor = 'snake';
 let selectedSnake = document.querySelector('#selectedSnake');
 let appleIndex = 0;
@@ -31,6 +32,7 @@ let showGridOnScreen = false;
 let sfx = true;
 let music = true;
 let gameActive = false;
+let scoreBoard = [0,0,0,0,0];
 let eatFruitSound = new Audio ('sounds/fruit2.wav');
 let gameOverSound = new Audio ('sounds/gameOver.wav');
 let backgroundMusic = new Audio ('sounds/background.mp3');
@@ -128,6 +130,16 @@ function controls(event){
         event.preventDefault();
         direction = +newWidth(); //(down arrow) snake will move down (go forward (x) cells depending on grid size)
     };
+
+    //log player to leaderboard
+    if(event.keyCode === 13){
+        event.preventDefault();
+        leaderInput();
+        if(enterName.value){
+            enterName.style.display = 'none'
+        }
+        enterName.value = '';
+    }
 }
 
 document.addEventListener('keydown', controls);
@@ -231,6 +243,7 @@ function gameOver(){
     boardSizeSlider.style.display = 'block';
     speedSlider.style.display = 'block';
     enterName.value = "";
+    enterName.style.display = "block";
     clearInterval(interval);
 
 }
@@ -320,6 +333,16 @@ function hideOptions(){
     lostGameOutput.style.display = 'none';
     overlay.style.display = 'none';
 }
+
+function leaderInput(){
+    if(enterName.value){
+        leaderBoard.innerHTML += `<div id='nameScore'><p>${enterName.value}</p> <span id='dots'></span> <p>${score}</p></div>`;
+        }
+    }
+
+    
+
+
 
 
 drawBoard();
